@@ -2,7 +2,7 @@
 
     require_once './config/database.php';
 
-    class Vuelo{
+    class Fly{
         private $conn;
         private $table = 'Vuelo';
 

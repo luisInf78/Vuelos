@@ -1,21 +1,27 @@
 <?php
-
-    class Database{
-
-        private $host = "localhost";
-        private $db_name= "daw2";
-        private $username= "root";
-        private $password= "";
+    declare(strict_types = 1);
+    class Database{    
         public $conn;
+        public function __construct(
+            
+            private string $dsn = "mysql:host=localhost;dbname=daw2",
+            private string $db_name= "daw2",
+            private string $username= "root",
+            private string $password= ""){
+
+            }
 
         public function getConnection(){
-            $conn = mysqli_connect($this->host,$this->username,$this->password,$this->db_name);
 
-            if(mysqli_connect_errno()){
-                echo "Error en la conexión";
-                exit();
+            try{
+                $this->conn = new PDO($this->dsn,$this->username,$this->password);
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            }catch(PDOException $e){
+                echo 'Falló la conexión:' . $e->getMenssage();
+
             }
-            return $conn;
+
+            return $this->conn;
         }//fin getConnection
 
     }//fin class

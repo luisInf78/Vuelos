@@ -7,12 +7,11 @@
 </head>
 <body>
 
-    <ul>
-        
-        <?php foreach ($paises as $pais): ?>
-            <li><?php echo $pais->getIdPais(). ' (' . $pais->getNombre() . ')'; ?></li>
-        <?php endforeach; ?>
-    </ul>
+    <form action="" method="GET">
+        <input type='text' name='idpais' id='idpais'>
+        <input type='text' name='nombre' id='nombre'>
+        <button type='submit' value='alta'>
+    </form>
     
 </body>
 </html>

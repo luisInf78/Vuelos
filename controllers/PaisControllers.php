@@ -1,16 +1,21 @@
 <?php
-    require './models/Pais.php';
+    require './models/Country.php';
     class PaisControllers{
         private $paisModels;
 
         public function __construct(){
-            $this->paisModels = new Pais();
+            $this->paisModels = new Country();
         }
 
         public function index(){
 
-            $paises = $this->paisModels->getAll();
+            $paises = $this->paisModels->getAllid(1);
             include './views/listaPaises.php';
+        }
+
+        public function create(){
+            include './views/altaPaises.php';
+            echo $this->paisModels->create($_GET['idpais'],$_GET['nombre']);
         }
 
     }

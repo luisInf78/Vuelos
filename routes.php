@@ -3,5 +3,5 @@
 
    
     $controller = new PaisControllers();
-    $controller->index();
+    $controller->create();
     
